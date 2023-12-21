@@ -7,15 +7,23 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     private Transform target;
 
-    [SerializeField]
-    private float range;
-
-    public string tagEnemy = "Enemy";
-
-    [SerializeField]
-    private Transform towerRotate;
+    [Header("Setting")]
     [SerializeField]
     private float speedRotation = 8f;
+    [SerializeField]
+    private float range;
+    public float fireRange = 1f;
+    public float fireCountdown = 0f;
+
+
+    [Header("Setup Fields")]
+    [SerializeField]
+    private string tagEnemy = "Enemy";
+    [SerializeField]
+    private Transform towerRotate;
+    public GameObject bullet;
+    public Transform pointFire;
+
     void Start()
     {
         InvokeRepeating("targetUpdate", 0f, 0.2f);
@@ -59,9 +67,20 @@ public class Turret : MonoBehaviour
         Quaternion lookToEnemy = Quaternion.LookRotation(towerDir);
         Vector3 rotation = Quaternion.Lerp(towerRotate.rotation, lookToEnemy, Time.deltaTime * speedRotation).eulerAngles;
         towerRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-      
+
+        if (fireCountdown <= 0)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRange;
+        }
+        fireCountdown -= Time.deltaTime;
     }
 
+    void Shoot()
+    {
+        //Debug.Log("SHOOT!");
+        Instantiate(bullet, pointFire.transform.position, pointFire.transform.rotation);
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
