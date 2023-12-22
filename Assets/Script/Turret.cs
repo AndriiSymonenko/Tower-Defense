@@ -9,7 +9,7 @@ public class Turret : MonoBehaviour
 
     [Header("Setting")]
     [SerializeField]
-    private float speedRotation = 8f;
+    private float speedRotation = 5f;
     [SerializeField]
     private float range;
     public float fireRange = 1f;
@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour
     private string tagEnemy = "Enemy";
     [SerializeField]
     private Transform towerRotate;
-    public GameObject bullet;
+    public GameObject bulletPrefab;
     public Transform pointFire;
 
     void Start()
@@ -78,8 +78,13 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        //Debug.Log("SHOOT!");
-        Instantiate(bullet, pointFire.transform.position, pointFire.transform.rotation);
+        GameObject bulletGO =  (GameObject)Instantiate(bulletPrefab, pointFire.transform.position, pointFire.transform.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if (bullet != null)
+        {
+            bullet.Search(target);
+        }
     }
     void OnDrawGizmosSelected()
     {
