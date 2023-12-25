@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 
@@ -11,22 +12,31 @@ public class Node : MonoBehaviour
 
     
 
-    private Renderer rendererNone;
+    private Renderer rendererNode;
     private Color startColor;
+    BuildingManager buildingManager;
 
 
     private void Start()
     {
-        rendererNone = GetComponent<Renderer>();
-        startColor = rendererNone.material.color;
+        rendererNode = GetComponent<Renderer>();
+        startColor = rendererNode.material.color;
+
+        buildingManager = BuildingManager.instance;
         
     }
 
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) //stop set turret if button located on game field
+            return;
+
+        if (buildingManager.GetTurret() == null)
+            return;
+
         if (turret != null)
         {
-            rendererNone.material.color = Color.red;
+            rendererNode.material.color = Color.red;
             return;
         }
 
@@ -36,12 +46,17 @@ public class Node : MonoBehaviour
 
     void OnMouseEnter()
     {
-        rendererNone.material.color = hoverColor;
+        if (EventSystem.current.IsPointerOverGameObject()) //stop set turret if button located on game field
+            return;
+
+        if (buildingManager.GetTurret() == null)
+            return;
+        rendererNode.material.color = hoverColor;
     }
 
     void OnMouseExit()
     {
-        rendererNone.material.color = startColor;
+        rendererNode.material.color = startColor;
     }
 
 }

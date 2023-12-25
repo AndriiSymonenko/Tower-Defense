@@ -15,17 +15,19 @@ public class BuildingManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject TurretOnePrefab;
+    public GameObject turretOnePrefab;
+    public GameObject turretTwoPrefab;
 
-    void Start()
-    {
-        toBuilding = TurretOnePrefab;
-    }
 
     private GameObject toBuilding;
 
     public GameObject GetTurret ()
     {
         return toBuilding; 
+    }
+
+    public void SetTurretToBild (GameObject turret)
+    {
+        toBuilding = turret;
     }
 }

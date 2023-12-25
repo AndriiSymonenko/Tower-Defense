@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private bool movement = true;
+
     public float camSpeed = 5f;
     public float borderThikness = 5f;
 
@@ -9,9 +11,16 @@ public class CameraController : MonoBehaviour
     public float minY = 5f;
     public float maxY = 35f;
 
+
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            movement = !movement;
+        if (!movement)
+            return;
+            
+
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - borderThikness)
         {
             transform.Translate(Vector3.forward * camSpeed * Time.deltaTime, Space.World);
