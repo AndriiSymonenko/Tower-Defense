@@ -9025,7 +9025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretOnePrefab: {fileID: 8998805794411313600, guid: bc8ee5ff6e119464db1ebb2ac98dc0c8,
     type: 3}
-  turretTwoPrefab: {fileID: 8998805794411313600, guid: bc8ee5ff6e119464db1ebb2ac98dc0c8,
+  turretTwoPrefab: {fileID: 1770354304884485560, guid: 5dd875d10d575b149b5fa2220888c20c,
     type: 3}
 --- !u!1001 &1815000606
 PrefabInstance:
@@ -10190,7 +10190,7 @@ PrefabInstance:
     - target: {fileID: 7644966785030849552, guid: ba6f7049a14a2bb4785235cdfba7de88,
         type: 3}
       propertyPath: m_Name
-      value: Turret item (1)
+      value: Turret item 2
       objectReference: {fileID: 0}
     - target: {fileID: 8264429279311482455, guid: ba6f7049a14a2bb4785235cdfba7de88,
         type: 3}
