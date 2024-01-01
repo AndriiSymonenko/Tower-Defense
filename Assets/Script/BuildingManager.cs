@@ -23,6 +23,9 @@ public class BuildingManager : MonoBehaviour
     private TurretBluepint toBuilding;
 
     public bool CanBuild { get { return toBuilding != null; } }
+    public bool HasMoney { get { return PlayerStats.Money >= toBuilding.cost; } } //verify money in player wallet
+
+
 
     public void BuildTurretOn(Node node)
     {
@@ -34,7 +37,7 @@ public class BuildingManager : MonoBehaviour
 
         PlayerStats.Money -= toBuilding.cost;
 
-       GameObject turret = (GameObject)Instantiate(toBuilding.prefab, node.GetBuildPosition(), Quaternion.identity);
+        GameObject turret = (GameObject)Instantiate(toBuilding.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
 
         Debug.Log("Turret build! Money left " + PlayerStats.Money);

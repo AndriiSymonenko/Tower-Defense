@@ -6,6 +6,7 @@ public class Node : MonoBehaviour
 {
     [SerializeField]
     private Color hoverColor;
+    public Color noBuildingColor;
 
     [Header("Optional")]
     public GameObject turret;
@@ -42,10 +43,18 @@ public class Node : MonoBehaviour
         //rendererNode.material.color = Color.red;
         return;
 
-       if (turret != null)
+        if (turret != null)
         {
-            rendererNode.material.color = Color.red;
+            rendererNode.material.color = noBuildingColor;
             return;
+        }
+
+        if (buildingManager.HasMoney)
+        {
+            rendererNode.material.color = hoverColor;
+        } else
+        {
+            rendererNode.material.color = noBuildingColor;
         }
 
         buildingManager.BuildTurretOn(this);
@@ -59,6 +68,15 @@ public class Node : MonoBehaviour
         if (!buildingManager.CanBuild)
             return;
             rendererNode.material.color = hoverColor;
+
+        if (buildingManager.HasMoney)
+        {
+            rendererNode.material.color = hoverColor;
+        }
+        else
+        {
+            rendererNode.material.color = noBuildingColor;
+        }
     }
 
     void OnMouseExit()
