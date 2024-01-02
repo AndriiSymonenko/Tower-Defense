@@ -30,7 +30,10 @@ public class WaveGenerator : MonoBehaviour
           countdown = timeBetweenWave; // reset timer
         }
         countdown -= Time.deltaTime;
-        waveCountText.text = Mathf.Round(countdown).ToString();
+
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+        waveCountText.text = string.Format("{0:00.00}", countdown);
     }
 
     IEnumerator SpawnWave()
