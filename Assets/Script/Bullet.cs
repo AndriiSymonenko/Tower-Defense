@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed = 30f;
     public float exposionRadius = 0f;
 
+    public int damage = 50;
+
     public GameObject explosionEffect;
 
     public void Search(Transform _target)
@@ -70,7 +72,13 @@ public class Bullet : MonoBehaviour
     }
     void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        Enemy enemyComponent = enemy.GetComponent<Enemy>();
+
+        if (enemyComponent != null)
+        {
+            enemyComponent.TakeDamage(damage);
+        }
+
     }
 
     void OnDrawGizmosSelected()

@@ -18,6 +18,8 @@ public class BuildingManager : MonoBehaviour
     public GameObject turretOnePrefab;
     public GameObject turretTwoPrefab;
 
+    public GameObject buildEffect;
+
 
 
     private TurretBluepint toBuilding;
@@ -39,6 +41,9 @@ public class BuildingManager : MonoBehaviour
 
         GameObject turret = (GameObject)Instantiate(toBuilding.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
+
+        GameObject effectBuild = (GameObject)Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
+        Destroy(effectBuild, 5f);
 
         Debug.Log("Turret build! Money left " + PlayerStats.Money);
 
