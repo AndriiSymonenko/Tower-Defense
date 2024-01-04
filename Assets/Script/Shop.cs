@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public TurretBluepint turretOne;
-    public TurretBluepint turretTwo;
+    public TurretBlueprint turretOne;
+    public TurretBlueprint turretTwo;
+    public TurretBlueprint turretThree;
+
 
     BuildingManager buildingManager;
 
@@ -20,5 +22,11 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Turret 2");
         buildingManager.SelectTurretToBild(turretTwo);
+    }
+
+    public void Select_3_Turret()
+    {
+        Debug.Log("Turret 3");
+        buildingManager.SelectTurretToBild(turretThree);
     }
 }

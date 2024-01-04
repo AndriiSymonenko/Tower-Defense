@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class TurretBluepint
+public class TurretBlueprint
 {
     public GameObject prefab;
     public int cost;

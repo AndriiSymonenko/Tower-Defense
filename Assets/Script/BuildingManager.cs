@@ -15,14 +15,13 @@ public class BuildingManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject turretOnePrefab;
-    public GameObject turretTwoPrefab;
+
 
     public GameObject buildEffect;
 
 
 
-    private TurretBluepint toBuilding;
+    private TurretBlueprint toBuilding;
 
     public bool CanBuild { get { return toBuilding != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= toBuilding.cost; } } //verify money in player wallet
@@ -49,7 +48,7 @@ public class BuildingManager : MonoBehaviour
 
     }
 
-    public void SelectTurretToBild(TurretBluepint turret)
+    public void SelectTurretToBild(TurretBlueprint turret)
     {
         toBuilding = turret;
     }
