@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Turret 3
+  m_text: 'Turret 2
 
 '
   m_isRightToLeft: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: Select_3_Turret
+        m_MethodName: Select_2_Turret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
