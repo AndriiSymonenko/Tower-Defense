@@ -2,29 +2,35 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [HideInInspector]
     public float enemySpeed = 5f;
+    public float startSpeed;
 
-    public int health = 100;
+    public float health = 100;
     public int revenueForEnemy = 50;
 
     public GameObject deathEffect;
 
-    private Transform target;
-    private int pathPointIndex = 0;
-
-    private void Start()
+    void Start()
     {
-        target = PathPoints.points[0]; //set first target points frome enemy
+        startSpeed = enemySpeed;
     }
 
-    public void TakeDamage (int ammount)
+    public void TakeDamage(float amount)
     {
-        health -= ammount;
+        health -= amount;
 
         if (health <= 0)
         {
             Die();
         }
+
+    }  
+
+    public void Slow(float amount)
+    {
+        enemySpeed = startSpeed * (1f - amount);
+    }
 
         void Die ()
         {
@@ -35,32 +41,6 @@ public class Enemy : MonoBehaviour
             
             Destroy(gameObject);
         }
-    }
-    private void Update()
-    {
-        Vector3 direction = target.position - transform.position; //definition direction for enemy
-        transform.Translate(direction.normalized * enemySpeed * Time.deltaTime, Space.World); // set move for enemy
-
-        if (Vector3.Distance(transform.position, target.position) <= 0.3f)
-        {
-            GetNextPathPoints();
-        }
-
-        void GetNextPathPoints()
-        {
-            if (pathPointIndex >= PathPoints.points.Length - 1)
-            {
-                EndPath();
-                return;
-            }
-            pathPointIndex++;
-            target = PathPoints.points[pathPointIndex]; // set new pathPoints
-        }
-    }
-
-    void EndPath()
-    {
-        PlayerStats.Lives--;
-        Destroy(gameObject);
-    }
 }
+  
+

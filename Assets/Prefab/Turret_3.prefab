@@ -9971,6 +9971,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 2461315076479901296}
   impactEffect: {fileID: 255198414542917786}
   laserLight: {fileID: 7795360694006244555}
+  damageOverTime: 30
   tagEnemy: Enemy
   towerRotate: {fileID: 7266294265096516762}
   pointFire: {fileID: 6461792949832231021}

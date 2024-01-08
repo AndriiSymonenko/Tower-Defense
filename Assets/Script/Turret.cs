@@ -5,6 +5,7 @@ public class Turret : MonoBehaviour
 {
     // Start is called before the first frame update
     private Transform target;
+    private Enemy targetEnemy;
 
     [Header("General")]
     
@@ -21,6 +22,8 @@ public class Turret : MonoBehaviour
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light laserLight;
+    public int damageOverTime = 30;
+    public float slowEnemy = 0.5f;
 
 
     [Header("Setup Fields")]
@@ -34,6 +37,7 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
+        
         InvokeRepeating("targetUpdate", 0f, 0.2f);
     }
 
@@ -57,6 +61,7 @@ public class Turret : MonoBehaviour
         if (nearEnemy != null && shortDistance <= range)
         {
             target = nearEnemy.transform;
+            targetEnemy = nearEnemy.GetComponent<Enemy>();
         }
         else
         {
@@ -114,6 +119,9 @@ public class Turret : MonoBehaviour
 
     void Laser ()
     {
+        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        targetEnemy.Slow(slowEnemy);
+
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;

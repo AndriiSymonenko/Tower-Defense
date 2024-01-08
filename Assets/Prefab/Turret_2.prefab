@@ -49,12 +49,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedRotation: 2
   range: 3
-  fireRange: 1
-  fireCountdown: 0
-  tagEnemy: Enemy
-  towerRotate: {fileID: 8917795189253434180}
   bulletPrefab: {fileID: 6352605814591213446, guid: 169a497b07361b04caf6cb7d29f0b448,
     type: 3}
+  fireRange: 0.5
+  fireCountdown: 0
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  laserLight: {fileID: 0}
+  damageOverTime: 30
+  tagEnemy: Enemy
+  towerRotate: {fileID: 8917795189253434180}
   pointFire: {fileID: 7318755142234119376}
 --- !u!1 &3539407109838123271
 GameObject:
@@ -103,12 +108,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedRotation: 5
   range: 3
-  fireRange: 1
-  fireCountdown: 0
-  tagEnemy: Enemy
-  towerRotate: {fileID: 8917795189253434180}
   bulletPrefab: {fileID: 6352605814591213446, guid: 169a497b07361b04caf6cb7d29f0b448,
     type: 3}
+  fireRange: 1
+  fireCountdown: 0
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  laserLight: {fileID: 0}
+  damageOverTime: 30
+  tagEnemy: Enemy
+  towerRotate: {fileID: 8917795189253434180}
   pointFire: {fileID: 7318755142234119376}
 --- !u!1 &4510987076435572477
 GameObject:
