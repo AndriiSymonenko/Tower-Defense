@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
@@ -15,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
 
-        target = PathPoints.points[0]; //set first target points frome enemy
+        target = PathPoints.points[0]; //set first target points from enemy
     }
 
     void Update()
