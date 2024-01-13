@@ -22,7 +22,9 @@ public class BuildingManager : MonoBehaviour
 
 
     private TurretBlueprint toBuilding;
+    private Node selectNode;
 
+    public NodeUI nodeUI;
     public bool CanBuild { get { return toBuilding != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= toBuilding.cost; } } //verify money in player wallet
 
@@ -48,8 +50,29 @@ public class BuildingManager : MonoBehaviour
 
     }
 
+    public void SelectNode(Node node)
+    {
+        if (selectNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+
+        selectNode = node;
+        toBuilding = null;
+
+        nodeUI.SetTarget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectNode = null;
+        nodeUI.HideUI();
+    }
+
     public void SelectTurretToBild(TurretBlueprint turret)
     {
         toBuilding = turret;
+        DeselectNode();
     }
 }

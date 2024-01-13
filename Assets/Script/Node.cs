@@ -39,13 +39,12 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject()) //stop set turret if button located on game field
             return;
 
-        if (!buildingManager.CanBuild)
-        //rendererNode.material.color = Color.red;
-        return;
+
 
         if (turret != null)
         {
-            rendererNode.material.color = noBuildingColor;
+            //rendererNode.material.color = noBuildingColor;
+            buildingManager.SelectNode(this);
             return;
         }
 
