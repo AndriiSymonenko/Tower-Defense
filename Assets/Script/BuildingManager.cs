@@ -18,6 +18,7 @@ public class BuildingManager : MonoBehaviour
 
 
     public GameObject buildEffect;
+    public GameObject sellEffect;
 
 
 
