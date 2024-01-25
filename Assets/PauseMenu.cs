@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
-     void Update()
+    public string mainMenu = "MainMenu";
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -32,6 +33,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Menu()
     {
-        Debug.Log("Go to Menu");
+        SceneManager.LoadScene(mainMenu);
     }
 }
