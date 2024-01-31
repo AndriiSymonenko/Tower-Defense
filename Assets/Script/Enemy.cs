@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     [HideInInspector]
-    public float enemySpeed = 5f;
+    public float enemySpeed;
     public float startSpeed;
 
     public float startHealth = 100;
@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        startSpeed = enemySpeed;
+        enemySpeed = startSpeed;
         health = startHealth;
     }
 
@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour
 
             GameObject effect =  (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
             Destroy(effect, 5f);
+
+        WaveGenerator.EnemiesAlive--;
             
             Destroy(gameObject);
         }
